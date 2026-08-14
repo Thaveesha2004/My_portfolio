@@ -869,6 +869,104 @@ button { font-family: inherit; }
   transform: none;
 }
 
+/* ===== Resume ===== */
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.resume-copy p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 480px;
+  margin-bottom: 28px;
+}
+.resume-copy .btn {
+  border-radius: var(--radius-sm);
+  padding: 12px 22px;
+}
+.resume-preview {
+  display: block;
+  justify-self: center;
+  width: 100%;
+  max-width: 340px;
+  transition: transform var(--ease);
+}
+.resume-preview:hover { transform: translateY(-4px); }
+.cv-sheet {
+  background: #F4F7FB;
+  color: #1A2332;
+  border-radius: 8px;
+  padding: 0 0 22px;
+  overflow: hidden;
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(234, 240, 246, 0.08);
+  aspect-ratio: 1 / 1.32;
+  display: flex;
+  flex-direction: column;
+}
+.cv-sheet-bar {
+  height: 8px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+.cv-name {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0B0F14;
+  padding: 18px 22px 0;
+  letter-spacing: -0.02em;
+}
+.cv-role {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #1A6FB5;
+  padding: 4px 22px 0;
+}
+.cv-meta {
+  font-size: 0.65rem;
+  color: #5B6B80;
+  padding: 2px 22px 0;
+}
+.cv-rule {
+  height: 1px;
+  background: #D5DEE8;
+  margin: 12px 22px;
+}
+.cv-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1A6FB5;
+  padding: 0 22px 6px;
+}
+.cv-line {
+  font-size: 0.68rem;
+  color: #2A3545;
+  padding: 2px 22px;
+  line-height: 1.4;
+}
+.cv-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 14px 22px 0;
+  margin-top: auto;
+}
+.cv-bars span {
+  display: block;
+  height: 6px;
+  border-radius: 4px;
+  background: #D9E2EC;
+}
+.cv-bars span:nth-child(1) { width: 92%; }
+.cv-bars span:nth-child(2) { width: 78%; }
+.cv-bars span:nth-child(3) { width: 86%; }
+.cv-bars span:nth-child(4) { width: 64%; }
+
 /* ===== Contact ===== */
 .contact-section { text-align: center; }
 .contact-section .section-title { margin-bottom: 16px; }
@@ -947,6 +1045,7 @@ button { font-family: inherit; }
   .hero-frame { max-width: 320px; }
   .about-grid { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
+  .resume-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .cert-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: repeat(2, 1fr); }

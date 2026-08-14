@@ -30,7 +30,7 @@ document.addEventListener('keydown', (e) => {
 
 // Scroll reveal
 const revealTargets = document.querySelectorAll(
-  '.about-grid, .skills-grid .skill-card, .projects-grid .project-card, .timeline-item, .cert-grid .cert-card, .contact-grid .contact-card'
+  '.about-grid, .skills-grid .skill-card, .projects-grid .project-card, .timeline-item, .cert-grid .cert-card, .resume-grid, .contact-grid .contact-card'
 );
 revealTargets.forEach(el => el.classList.add('reveal'));
 

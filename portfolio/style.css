@@ -803,20 +803,71 @@ button { font-family: inherit; }
 .timeline-content .muted { margin-top: 4px; }
 
 /* ===== Certifications ===== */
+.cert-block { margin-bottom: 40px; }
+.cert-block:last-child { margin-bottom: 0; }
+.cert-subhead {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.cert-note {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  max-width: 640px;
+  margin-bottom: 18px;
+}
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 22px;
 }
 .cert-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 26px;
+  padding: 24px 26px;
+  transition: border-color var(--ease), transform var(--ease);
 }
-.cert-card h3 { font-family: var(--font-head); font-size: 1.05rem; margin-bottom: 10px; }
+.cert-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+.cert-kicker {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.cert-card h4 {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
 .cert-card p { color: var(--text-muted); font-size: 0.92rem; }
-.cert-progress { border-style: dashed; border-color: var(--accent-dim); }
+.cert-empty {
+  border-style: dashed;
+  border-color: var(--border-strong);
+  background: transparent;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.cert-empty p {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.cert-empty:hover {
+  border-color: var(--accent-dim);
+  transform: none;
+}
 
 /* ===== Contact ===== */
 .contact-section { text-align: center; }

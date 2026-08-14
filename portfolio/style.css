@@ -764,7 +764,7 @@ button { font-family: inherit; }
   background: var(--accent);
   box-shadow: 0 0 0 4px rgba(58, 169, 255, 0.18);
 }
-.timeline-item:first-child .timeline-dot {
+.timeline-item.is-current .timeline-dot {
   background: var(--accent-2);
   box-shadow: 0 0 0 4px rgba(51, 214, 166, 0.22);
 }

@@ -30,7 +30,7 @@ document.addEventListener('keydown', (e) => {
 
 // Scroll reveal
 const revealTargets = document.querySelectorAll(
-  '.about-grid, .skills-grid .skill-card, .projects-grid .project-card, .timeline-item, .cert-grid .cert-card, .resume-grid, .contact-grid .contact-card'
+  '.about-grid, .skills-grid .skill-card, .projects-grid .project-card, .timeline-item, .cert-grid .cert-card, .resume-grid, .contact-layout'
 );
 revealTargets.forEach(el => el.classList.add('reveal'));
 
@@ -63,3 +63,24 @@ function updateNavState() {
 
 window.addEventListener('scroll', updateNavState, { passive: true });
 updateNavState();
+
+// Static contact form → mailto
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = contactForm.name.value.trim();
+    const email = contactForm.email.value.trim();
+    const subject = contactForm.subject.value.trim();
+    const message = contactForm.message.value.trim();
+    if (!name || !email || !subject || !message) {
+      formStatus.textContent = 'Please fill in every field.';
+      return;
+    }
+    const body = `From: ${name} <${email}>\n\n${message}`;
+    const mailto = `mailto:thaveeshaweerasinghe2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    formStatus.textContent = 'Opening your email app…';
+    window.location.href = mailto;
+  });
+}

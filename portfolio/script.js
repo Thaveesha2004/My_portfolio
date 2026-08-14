@@ -2,13 +2,30 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // Mobile nav toggle
+const nav = document.getElementById('nav');
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
+
+function setMenuOpen(open) {
+  navLinks.classList.toggle('open', open);
+  document.body.classList.toggle('nav-open', open);
+  navToggle.setAttribute('aria-expanded', String(open));
+  navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+}
+
 navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+  setMenuOpen(!navLinks.classList.contains('open'));
 });
+
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
+  link.addEventListener('click', () => setMenuOpen(false));
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+    setMenuOpen(false);
+    navToggle.focus();
+  }
 });
 
 // Typewriter effect for hero role
@@ -96,25 +113,21 @@ const observer = new IntersectionObserver((entries) => {
 
 revealTargets.forEach(el => observer.observe(el));
 
-// Active nav link on scroll
+// Active nav link on scroll + glass edge
 const sections = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.nav-links a');
+const navAnchors = document.querySelectorAll('.nav-links a:not(.btn)');
 
-window.addEventListener('scroll', () => {
-  let current = '';
+function updateNavState() {
+  let current = 'home';
   sections.forEach(sec => {
     const top = sec.offsetTop - 120;
     if (window.scrollY >= top) current = sec.id;
   });
   navAnchors.forEach(a => {
-    a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
+    a.classList.toggle('is-active', a.getAttribute('href') === `#${current}`);
   });
+  nav.classList.toggle('is-scrolled', window.scrollY > 8);
+}
 
-  // nav shadow on scroll
-  const nav = document.getElementById('nav');
-  if (window.scrollY > 10) {
-    nav.style.boxShadow = '0 8px 24px rgba(0,0,0,0.25)';
-  } else {
-    nav.style.boxShadow = 'none';
-  }
-});
+window.addEventListener('scroll', updateNavState, { passive: true });
+updateNavState();
